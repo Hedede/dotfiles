@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+#
+# .XCompose
+#
+# $Id: .XCompose,v 1.31 2008/09/18 17:57:14 deskpot Exp $
+
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+#
+# Quotation marks
+#
+<Multi_key> <Cyrillic_be>       : "«"   guillemotleft  # LEFT DOUBLE ANGLE QUOTATION
+<Multi_key> <comma>             : "«"   guillemotleft  # LEFT DOUBLE ANGLE QUOTATION
+<Multi_key> <Cyrillic_yu>       : "»"   guillemotright # RIGHT DOUBLE ANGLE QUOTATION
+<Multi_key> <period>            : "»"   guillemotright # RIGHT DOUBLE ANGLE QUOTATION
+<Multi_key> <Cyrillic_BE>       : "„"   U201e # DOUBLE LOW-9 QUOTATION MARK
+<Multi_key> <less>              : "„"   U201e # DOUBLE LOW-9 QUOTATION MARK
+<Multi_key> <Cyrillic_YU>       : "“"   U201c # LEFT DOUBLE QUOTATION MARK
+<Multi_key> <greater>           : "“"   U201c # LEFT DOUBLE QUOTATION MARK
+#
+<Multi_key> <Cyrillic_zhe>      : "‘"   U2018 # LEFT SINGLE QUOTATION MARK
+<Multi_key> <semicolon>         : "‘"   U2018 # LEFT SINGLE QUOTATION MARK
+<Multi_key> <Cyrillic_e>        : "’"   U2019 # RIGHT SINGLE QUOTATION MARK
+<Multi_key> <apostrophe>        : "’"   U2019 # RIGHT SINGLE QUOTATION MARK
+<Multi_key> <Cyrillic_ZHE>      : "“"   U201c # LEFT DOUBLE QUOTATION MARK
+<Multi_key> <colon>             : "“"   U201c # LEFT DOUBLE QUOTATION MARK
+<Multi_key> <Cyrillic_E>        : "”"   U201d # RIGHT DOUBLE QUOTATION MARK
+<Multi_key> <quotedbl>          : "”"   U201d # RIGHT DOUBLE QUOTATION MARK
+
+#
+# Dashes
+#
+<Multi_key> <Cyrillic_de>	 : "—"   emdash       # EM DASH
+<Multi_key> <underscore>         : "–"   endash       # EN DASH
+
+#
+# Currencies
+#
+<Multi_key> <Cyrillic_u>        : "€"   EuroSign     # EURO SIGN
+<Multi_key> <e>                 : "€"   EuroSign     # EURO SIGN
+<Multi_key> <Cyrillic_a>        : "£"   sterling     # POUND SIGN
+<Multi_key> <f>                 : "£"   sterling     # POUND SIGN
+
+#
+# Trademarks
+#
+<Multi_key> <Cyrillic_es>       : "©"   copyright    # COPYRIGHT SIGN
+<Multi_key> <c>                 : "©"   copyright    # COPYRIGHT SIGN
+<Multi_key> <Cyrillic_ka>       : "®"   registered   # REGISTERED SIGN
+<Multi_key> <r>                 : "®"   registered   # REGISTERED SIGN
+<Multi_key> <Cyrillic_ie>       : "™"   U2122        # TRADE MARK SIGN
+<Multi_key> <t>                 : "™"   U2122        # TRADE MARK SIGN
+
+#
+# Math
+#
+<Multi_key> <Cyrillic_ef>       : "≈"   approximate  # ALMOST EQUAL TO
+<Multi_key> <a>                 : "≈"   approximate  # ALMOST EQUAL TO
+<Multi_key> <5>                 : "‰"   U2030        # PER MILLE SIGN
+<Multi_key> <equal>             : "≠"   U2260        # NOT EQUAL TO
+<Multi_key> <plus>              : "±"   plusminus    # PLUS-MINUS SIGN
+
+#
+# Misc. typographics
+#
+<Multi_key> <Cyrillic_yeru>     : "§"   section      # SECTION SIG
+<Multi_key> <s>                 : "§"   section      # SECTION SIGN
+<Multi_key> <Cyrillic_shcha>    : "°"   degree       # DEGREE SIGN
+<Multi_key> <o>                 : "°"   degree       # DEGREE SIGN
+<Multi_key> <space>             : " "   nobreakspace # NO-BREAK SPACE
+<Multi_key> <Cyrillic_ve>       : "…"   ellipsis     # HORIZONTAL ELLIPSIS
+<Multi_key> <d>                 : "…"   ellipsis     # HORIZONTAL ELLIPSIS
+
+#
+# Missing keys in Russian layout
+#
+<Multi_key> <3>                 : "#"   numbersign   # NUMBER SIGN
+<Multi_key> <4>                 : "$"   dollar       # DOLLAR SIGN
+<Multi_key> <Cyrillic_ha>       : "["   bracketleft  # LEFT SQUARE BRACKET
+<Multi_key> <Cyrillic_hardsign> : "]"   bracketright # RIGHT SQUARE BRACKET
+
+#
+# Bindings to ease usage with the Russian `typewriter' layout.
+# NB: Unable to bind dollar symbol to be Compose+4, it's Compose+Shift+4.
+#
+<Multi_key> <2>                 : "—"   emdash       # EM DASH
+<Multi_key> <8>                 : "–"   endash       # EN DASH
+<Multi_key> <slash>             : "#"   numbersign   # NUMBER SIGN
+<Multi_key> <percent>           : "‰"   U2030        # PER MILLE SIGN
+<Multi_key> <bar>               : "±"   plusminus    # PLUS-MINUS SIGN
