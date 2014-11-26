@@ -1,9 +1,20 @@
+# End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' max-errors 3
 zstyle :compinstall filename '/home/hudd/.zshrc'
+
+setopt interactivecomments
+
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt HIST_IGNORE_DUPS
 
 # Command prompt
 autoload -U colors && colors
@@ -11,9 +22,9 @@ PROMPT="%{$fg_bold[red]%}%n%{$reset_color%}@%{$fg[cyan]%}%m %{$fg_no_bold[yellow
 RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # Keyboard setup
-bindkey -e
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
+bindkey -e
 typeset -A key
 
 key[Home]=${terminfo[khome]}
@@ -40,6 +51,8 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
 
+bindkey "^Q" push-input
+
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -52,3 +65,5 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+export PATH=$PATH:~/.gem/ruby/2.1.0/bin/
