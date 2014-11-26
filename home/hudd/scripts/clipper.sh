@@ -4,11 +4,11 @@
 # It is pretty dirty, but gets the job done
 
 # Default vars
-clip_dir="$PWD"
+clip_dir="$HOME"
 clip_id=0
 clip_ext="png"
 id_file="$clip_dir/.lastid"
-config_file="~/local/clipper.conf"
+config_file="$HOME/.local/clipper.conf"
 window_border=false
 method="fullscreen"
 shooter="scrot"
@@ -30,15 +30,18 @@ function write_id {
 
 # Quick and dirty config parser
 function parse_config {
+	echo "$config_file"
 	if [ -e $config_file ] ;
 	then
+		echo "tru"
 		# Set IFS to =, to parse options as 'var=VALUE'
 		OLDIFS=$IFS
 		IFS="="
 		while read -r name value
 		do
+			echo "$name $value"
 			case "$name" in 
-				clip-dir) $clip_dir=$value
+				'clip-dir') clip_dir="$value"
 					;;
 			esac	
 		done < $config_file
@@ -110,7 +113,7 @@ function find_window {
 	activeWinId=$(xdotool getwindowfocus)
 }
 
-#parse_config 	|| exit 1
+parse_config 	|| exit 1
 
 # Parse arguments
 while [[ $# > 0 ]]
