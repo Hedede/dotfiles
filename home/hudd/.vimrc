@@ -31,6 +31,8 @@ set modelines=5
 " Mappings
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>k
+" for opening urls in browser (i frequently stumble upon those) 
+nnoremap ,o :!xdg-open <cfile> &<CR>
 
 " source system-specific .vimrec
 if filereadable(expand('~/.local/vimrc'))
