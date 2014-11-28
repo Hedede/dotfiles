@@ -67,3 +67,7 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
 fi
 
 export PATH=$PATH:~/.gem/ruby/2.1.0/bin/
+
+# Environmant variables
+export SDL_VIDEO_X11_DGAMOUSE=0
+export EDITOR="vim" 
