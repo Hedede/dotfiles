@@ -14,14 +14,18 @@ method="fullscreen"
 shooter="scrot"
 shooter_args=()
 
-function inc_id {
+
+function get_id {
 	if [ -e $id_file ] ;
 	then
 		clip_id=$(<$clip_dir/.lastid)
-		(( clip_id=$clip_id+1 ))
 	else
-		clip_id=1;
+		clip_id=0
 	fi
+}
+
+function inc_id {
+	get_id && (( clip_id=$clip_id+1 ))
 }
 
 function write_id {
@@ -33,13 +37,12 @@ function parse_config {
 	echo "$config_file"
 	if [ -e $config_file ] ;
 	then
-		echo "tru"
 		# Set IFS to =, to parse options as 'var=VALUE'
 		OLDIFS=$IFS
 		IFS="="
 		while read -r name value
 		do
-			echo "$name $value"
+			echo "${name}=${value}"
 			case "$name" in 
 				'clip-dir') clip_dir="$value"
 					;;
@@ -95,6 +98,10 @@ function select_shooter {
 			;;
 		esac
 		;;
+	none)
+		# Run some utility, don't take screenshot
+		return 1
+		;;
 	*)
 		echo "Unrecognized program"
 		return 1
@@ -138,6 +145,10 @@ do
 	-p|--program|--shooter)
 		shooter="$1"
 		;;
+	-d|--decrement)
+		shooter="none"
+		get_id && (( clip_id=$clip_id-1 )) && write_id
+		;;	
 	*)
 		##
 		;;
