@@ -14,7 +14,6 @@ method="fullscreen"
 shooter="scrot"
 shooter_args=()
 
-
 function get_id {
 	if [ -e $id_file ] ;
 	then
@@ -67,6 +66,10 @@ function select_shooter {
 				shooter_args+=('-b')
 			fi
 
+			;;
+		select)
+			sleep 1;
+			shooter_args+=('-s')
 			;;
 		*)
 			## default, fullscreen
@@ -142,6 +145,9 @@ do
 	-w|--active-window)
 		method="active"
 		;;
+	-s|--select)
+		method="select"
+		;;
 	-p|--program|--shooter)
 		shooter="$1"
 		;;
@@ -161,4 +167,4 @@ inc_id		|| exit 1
 shooter_args+=("$clip_dir/clp$clip_id.$clip_ext")
 
 # Execute command
-"$shooter" ${shooter_args[@]} && write_id
+"$shooter" ${shooter_args[@]} 2>&1 && write_id
