@@ -7,6 +7,7 @@
 clip_dir="$HOME"
 clip_id=0
 clip_ext="png"
+clip_rdonly=false
 id_file="$clip_dir/.lastid"
 config_file="$HOME/.local/clipper.conf"
 window_border=false
@@ -151,6 +152,9 @@ do
 	-p|--program|--shooter)
 		shooter="$1"
 		;;
+	-r|--readonly)
+		clip_rdonly=true
+		;;
 	-d|--decrement)
 		shooter="none"
 		get_id && (( clip_id=$clip_id-1 )) && write_id
@@ -164,7 +168,15 @@ done
 select_shooter 	|| exit 1
 inc_id		|| exit 1
 
-shooter_args+=("$clip_dir/clp$clip_id.$clip_ext")
+clip_path=$clip_dir/clp$clip_id.$clip_ext
+shooter_args+=("$clip_path")
 
 # Execute command
-"$shooter" ${shooter_args[@]} 2>&1 && write_id
+"$shooter" ${shooter_args[@]} 2>&1 && write_id || exit 1
+
+echo "Written file $clip_path"
+
+if [[ $clip_rdonly == true ]] ;
+then
+	chmod 0444 $clip_path || exit 1
+fi
