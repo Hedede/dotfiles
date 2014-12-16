@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 16 byte aligned, uses font which works on my system for ASCII -->
+<!-- 16 byte aligned, uses font which works -->
 <layout>
     <area type="offset">
 	<display>
@@ -14,10 +14,11 @@
 		    <foreground>dark red</foreground>
 		    <background>white</background>
 		</evencolumn>
-	    </oddrow>    
+	    </oddrow>
+	    <font>Droid Sans Mono 12</font>
 	</display>
     </area>
-    
+ 
     <area type="separator">
     	<display>
 	    <evenrow>
@@ -25,14 +26,15 @@
 		    <foreground>dark green</foreground>
 		    <background>white</background>
 		</evencolumn>
-	    </evenrow>    
+	    </evenrow>
 	</display>
     </area>
-    
+ 
     <area type="hexadecimal">
 	<bpr>16</bpr>
 	<!--grouping>2</grouping-->
 	<case>upper</case>
+        <display><font>Droid Sans Mono 12</font></display>
     </area>
 
     <area type="separator">
@@ -42,10 +44,10 @@
 		    <foreground>dark green</foreground>
 		    <background>white</background>
 		</evencolumn>
-	    </evenrow>    
+	    </evenrow>
 	</display>
     </area>
-    
+ 
     <area type="ascii">
         <display><font>Droid Sans Mono 12</font></display>
     </area>
