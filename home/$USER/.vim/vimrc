@@ -1,6 +1,10 @@
 set nocompatible
 filetype off
 
+"
+" plugins & plugin settings
+"
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/plugins/')
@@ -11,18 +15,60 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'endel/vim-github-colorscheme'
 "Plugin 'project.vim'
 Plugin 'project.tar.gz'
+" Improved session management, whatever that means
+if has('gui_running') 
+	" Plugin causes garbage to appear
+	" I only need this plugin for gvim anyway
+	Plugin 'xolox/vim-misc'
+	Plugin 'xolox/vim-session'
+	let g:session_autosave = 'no'
+endif
 
 call vundle#end()
+
+"
+" end of plugins & plugin settings
+"
+
 filetype plugin indent on
 
+"
+" Russian keymap for Cyrillic texts
+"
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=NONE guibg=Cyan
+imap <silent> <C-F> <C-^>
+imap <silent> <C-L> <C-^>
+
+"
+" Additional settings for GUI
+"
 if has('gui_running')
 	colorscheme github
+	set columns=90 lines=999
+	set guioptions-=rL
+else
+	if exists("+columns")
+		set columns=80
+	endif
+	if exists("+lines")
+		set lines=40
+	endif
 endif
 
 " Settings
 syn on
 set nu
 set showcmd
+" allow selection beyond end of existing lines
+set virtualedit=block
+
+  set cinkeys=0{,0},0),:,0#,!^F,o,O,e,<CR>
+" set cinkeys=0{,0},0),:,0#,!^F,o,O,e
+" default ^
+set cinoptions=N-s,:0,g0
 
 " enable modelines
 set modeline
@@ -31,8 +77,9 @@ set modelines=5
 " Mappings
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>k
-" for opening urls in browser (i frequently stumble upon those) 
 nnoremap ,o :!xdg-open <cfile> &<CR>
+" xnoremap p pgvy
+xnoremap <expr> p 'pgv"'.v:register.'y'
 
 " source system-specific .vimrec
 if filereadable(expand('~/.local/vimrc'))
