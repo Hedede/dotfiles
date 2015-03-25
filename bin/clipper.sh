@@ -4,10 +4,10 @@
 # It is pretty dirty, but gets the job done
 
 # Default vars
-clip_dir="$HOME"
 clip_id=0
 clip_ext="png"
 clip_rdonly=false
+clip_dir="$HOME"
 id_file="$clip_dir/.lastid"
 config_file="$HOME/.local/clipper.conf"
 window_border=false
@@ -32,6 +32,12 @@ function write_id {
 	echo $clip_id >| $clip_dir/.lastid
 }
 
+set_clip_dir () {
+	local dir="$1"
+	clip_dir="$dir"
+	id_file="$clip_dir/.lastid"
+}
+
 # Quick and dirty config parser
 function parse_config {
 	echo "$config_file"
@@ -44,7 +50,7 @@ function parse_config {
 		do
 			echo "${name}=${value}"
 			case "$name" in 
-				'clip-dir') clip_dir="$value"
+				'clip-dir') set_clip_dir "$value"
 					;;
 			esac	
 		done < $config_file
