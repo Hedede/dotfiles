@@ -15,7 +15,7 @@ method="fullscreen"
 shooter="scrot"
 shooter_args=()
 
-function get_id {
+get_id() {
 	if [ -e $id_file ] ;
 	then
 		clip_id=$(<$clip_dir/.lastid)
@@ -24,22 +24,22 @@ function get_id {
 	fi
 }
 
-function inc_id {
+inc_id() {
 	get_id && (( clip_id=$clip_id+1 ))
 }
 
-function write_id {
+write_id() {
 	echo $clip_id >| $clip_dir/.lastid
 }
 
-set_clip_dir () {
+set_clip_dir() {
 	local dir="$1"
 	clip_dir="$dir"
 	id_file="$clip_dir/.lastid"
 }
 
 # Quick and dirty config parser
-function parse_config {
+parse_config() {
 	echo "$config_file"
 	if [ -e $config_file ] ;
 	then
@@ -59,7 +59,7 @@ function parse_config {
 }
 
 # Select screenshooter and format command line
-function select_shooter {
+select_shooter() {
 	case $shooter in
 	scrot)
 		#clipper_command="scrot"
@@ -120,13 +120,13 @@ function select_shooter {
 }
 
 # (not working) Find active window
-function __find_window {
+__find_window() {
 	activeWinLine=$(xprop -root | grep "_NET_ACTIVE_WINDOW(WINDOW)")
 	activeWinId=${activeWinLine:40}
 }
 
 # Find active window
-function find_window {
+find_window() {
 	activeWinId=$(xdotool getwindowfocus)
 }
 
