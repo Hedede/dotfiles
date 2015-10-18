@@ -2,7 +2,7 @@
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' max-errors 3
-zstyle :compinstall filename '/home/hudd/.zshrc'
+zstyle :compinstall filename "${XDG_CONFIG_HOME}/zsh/.zshrc"
 
 autoload -Uz compinit
 compinit

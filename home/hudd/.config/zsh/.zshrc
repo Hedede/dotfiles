@@ -4,10 +4,10 @@ compinit
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' max-errors 3
-zstyle :compinstall filename '/home/hudd/.zshrc'
+zstyle :compinstall filename "${XDG_CONFIG_HOME}/zsh/.zshrc"
 
 # History
-HISTFILE=~/.histfile
+HISTFILE="${XDG_DATA_HOME}/zsh/history"
 HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
@@ -64,7 +64,4 @@ then
 	zle -N zle-line-finish
 fi
  
-export PATH=$PATH:~/.gem/ruby/2.1.0/bin/
-
-# Environmant variables
-export HISTFILE="$HOME/config/cache/zsh_hist"
+source "${HOME}/.shared_env"

@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+# less
+export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
+
+# QEMU
+export SDL_VIDEO_X11_DGAMOUSE=0 # Fix mouse problems in QEMU
+
+# etc
+export EDITOR="vim"
+export PATH=$PATH:~/.gem/ruby/2.1.0/bin/

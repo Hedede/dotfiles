@@ -1,3 +1,1 @@
-[[ -z $ZDOTDIR ]] && export ZDOTDIR="$HOME/config/zsh"
-
-source "$HOME/config/env.sh"
+[[ -z $ZDOTDIR ]] && export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
