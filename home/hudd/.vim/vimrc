@@ -60,8 +60,14 @@ set nu
 set showcmd
 " allow selection beyond end of existing lines
 set virtualedit=block
+" don't pollute working dirs with .swp files
+set directory=~/.vim/tmp//,/tmp,/var/tmp
+set backupdir=~/vim/tmp/backup
 
-  set cinkeys=0{,0},0),:,0#,!^F,o,O,e,<CR>
+"
+" Settings for cindent
+"
+set cinkeys=0{,0},0),:,0#,!^F,o,O,e,<CR>
 " set cinkeys=0{,0},0),:,0#,!^F,o,O,e
 " default ^
 set cinoptions=N-s,:0,g0
