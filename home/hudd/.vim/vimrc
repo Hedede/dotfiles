@@ -1,5 +1,4 @@
 set nocompatible
-filetype off
 
 "
 " plugins & plugin settings
@@ -30,17 +29,14 @@ call vundle#end()
 " end of plugins & plugin settings
 "
 
+" Enable filetype detection
+" filetype off
 filetype plugin indent on
 
-"
-" Russian keymap for Cyrillic texts
-"
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-highlight lCursor guifg=NONE guibg=Cyan
-imap <silent> <C-F> <C-^>
-imap <silent> <C-L> <C-^>
+augroup filetype
+	au! BufRead,BufNewFile *.ll     set filetype=llvm
+	au! BufRead,BufNewFile *.d      set filetype=daedalus
+augroup END
 
 "
 " Additional settings for GUI
@@ -74,12 +70,24 @@ set cinoptions=N-s,:0,g0
 set modeline
 set modelines=5
 
+"
 " Mappings
+"
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>k
 nnoremap ,o :!xdg-open <cfile> &<CR>
 " xnoremap p pgvy
 xnoremap <expr> p 'pgv"'.v:register.'y'
+
+"
+" Russian keymap for Cyrillic texts
+"
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=NONE guibg=Red
+imap <silent> <C-F> <C-^>
+imap <silent> <C-L> <C-^>
 
 " source system-specific .vimrec
 if filereadable(expand('~/.local/vimrc'))
