@@ -35,7 +35,7 @@ filetype plugin indent on
 
 augroup filetype
 	au! BufRead,BufNewFile *.ll     set filetype=llvm
-	au! BufRead,BufNewFile *.d      set filetype=daedalus
+	"au! BufRead,BufNewFile *.d      set filetype=daedalus
 augroup END
 
 "
@@ -45,6 +45,10 @@ if has('gui_running')
 	colorscheme github
 	set columns=90 lines=999
 	set guioptions-=rL
+
+	set list
+	set listchars=tab:\·\ ,trail:\·
+
 else
 	if exists("+columns")
 		set columns=80
@@ -62,7 +66,7 @@ set showcmd
 set virtualedit=block
 " don't pollute working dirs with .swp files
 set directory=~/.vim/tmp//,/tmp,/var/tmp
-set backupdir=~/vim/tmp/backup
+set backupdir=~/.vim/tmp/backup
 
 "
 " Settings for cindent
@@ -70,7 +74,8 @@ set backupdir=~/vim/tmp/backup
 set cinkeys=0{,0},0),:,0#,!^F,o,O,e,<CR>
 " set cinkeys=0{,0},0),:,0#,!^F,o,O,e
 " default ^
-set cinoptions=N-s,:0,g0
+set cinoptions=N-s,:0,g0,t0
+" +0 — makes things worse
 
 " enable modelines
 set modeline
