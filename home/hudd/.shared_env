@@ -2,6 +2,12 @@
 # less
 export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
 
+#mplayer
+export MPLAYER_HOME="${XDG_CONFIG_HOME}/mplayer"
+
+# GIMP
+export GIMP2_DIRECTORY="${XDG_DATA_HOME}/gimp"
+
 # QEMU
 export SDL_VIDEO_X11_DGAMOUSE=0 # Fix mouse problems in QEMU
 
