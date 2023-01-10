@@ -56,15 +56,20 @@ def read(file, lastfm)
     vals = line.split('|').map{|f| f.strip}
     vals[0] = (`date -d '#{vals[0]}' +%s`).strip
     #print "{", vals.map{|f| "\"#{f}\"" }.join(', '), "}\n"
-    dur = vals[6].split(':').map{|t| t.to_i}.reverse
+    if vals[6].include? ':' then
+      dur = vals[6].split(':').map{|t| t.to_i}.reverse
+      dur = dur[0] + dur[1]*60
+    else
+      dur = vals[6].to_i
+    end
     doScrobble(lastfm,
                ts: vals[0].to_i,
-               artist: vals[1],
-               track: vals[2],
-               album: vals[4],
-               album_artist: vals[3],
+               artist: vals[3],
+               track: vals[4],
+               album: vals[2],
+               album_artist: vals[1],
                trackno: vals[5],
-               duration: dur[0] + dur[1]*60
+               duration: dur
               )
   end
 end
@@ -77,4 +82,4 @@ lastfm = if !sessionid.nil?
            auth(apikey, secret)
          else nil
          end
-read('/tmp/playlist.txt', lastfm)
+read('/home/hudd/playlist.txt', lastfm)
