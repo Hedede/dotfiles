@@ -1,4 +1,5 @@
 set nocompatible
+set nobomb
 
 "
 " plugins & plugin settings
@@ -45,18 +46,12 @@ if has('gui_running')
 	colorscheme github
 	set columns=90 lines=999
 	set guioptions-=rL
-
-	set list
-	set listchars=tab:\·\ ,trail:\·
-
-else
-	if exists("+columns")
-		set columns=80
-	endif
-	if exists("+lines")
-		set lines=40
-	endif
+	"set guifont=Monospace\ 9
+	set guifont=Source\ Code\ Pro\ 9
 endif
+
+set list
+set listchars=tab:\·\ ,trail:\·
 
 " Settings
 syn on
@@ -83,7 +78,7 @@ set modelines=5
 
 "
 " Mappings
-"
+" 
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>k
 nnoremap ,o :!xdg-open <cfile> &<CR>
