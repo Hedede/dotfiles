@@ -1,0 +1,68 @@
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+
+<!-- Default font (no fc-match pattern) -->
+ <match>
+  <edit mode="prepend" name="family">
+   <string>Source Han Sans</string>
+  </edit>
+ </match>
+
+<!-- Default font for the ja_JP locale (no fc-match pattern) -->
+ <match>
+  <test compare="contains" name="lang">
+   <string>ja</string>
+  </test>
+  <edit mode="prepend" name="family">
+   <string>Source Han Sans JP</string>
+  </edit>
+ </match>
+
+<!-- Default sans-serif font -->
+ <match target="pattern">
+   <test qual="any" name="family"><string>sans-serif</string></test>
+   <!--<test qual="any" name="lang"><string>ja</string></test>-->
+   <edit name="family" mode="prepend" binding="same"><string>Source Han Sans JP</string>  </edit>
+ </match>
+ 
+<!-- Default serif fonts -->
+ <match target="pattern">
+   <test qual="any" name="family"><string>serif</string></test>
+   <edit name="family" mode="prepend" binding="same"><string>Source Han Serif JP</string>  </edit>
+ </match>
+
+<!-- Default monospace fonts -->
+ <match target="pattern">
+   <test qual="any" name="family"><string>monospace</string></test>
+   <edit name="family" mode="prepend" binding="same"><string>Inconsolata LGC</string></edit>
+   <edit name="family" mode="append" binding="same"><string>Liberation Mono</string></edit>
+   <edit name="family" mode="append" binding="same"><string>Source Han Sans JP</string>  </edit>
+ </match>
+
+<!-- Fallback fonts preference order -->
+ <alias>
+  <family>sans-serif</family>
+  <prefer>
+   <family>Source Han Sans JP</family>
+   <family>Liberation Sans</family>
+  </prefer>
+ </alias>
+ <alias>
+  <family>serif</family>
+  <prefer>
+   <family>Source Han Serif JP</family>
+   <family>Liberation Serif</family>
+  </prefer>
+ </alias>
+ <alias>
+  <family>monospace</family>
+  <prefer>
+    <family>Inconsolata LGC</family>
+    <family>Liberation Mono</family>
+    <family>Source Han Sans JP</family>
+  </prefer>
+ </alias>
+
+ <!--dir>~/.fonts</dir-->
+</fontconfig>
